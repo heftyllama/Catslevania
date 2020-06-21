@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - Shelter
+  - Safe
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Shelter
+  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 278066597
+    locked: 0
+  - name: Passthrough
+    uniqueID: 1765028165
+    locked: 0
+  - name: Shelter
+    uniqueID: 2499242541
+    locked: 0
+  - name: PlayerHidden
+    uniqueID: 3577125397
+    locked: 0
+  - name: Player
+    uniqueID: 930120327
+    locked: 0
+  - name: Collision
+    uniqueID: 1028843857
+    locked: 0
+  - name: Items
+    uniqueID: 1033964097
+    locked: 0
+  - name: Enemy
+    uniqueID: 327496985
+    locked: 0
