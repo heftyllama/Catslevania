@@ -10,7 +10,7 @@ public class YarnBehaviour : BaseItem
 
         if(col.tag == "Player" && col.GetComponent<PlayerAttributes>().hasYarn == false)
         {
-            col.GetComponent<PlayerAttributes>().playerInventory.Add(this.BaseItem);
+            col.GetComponent<PlayerAttributes>().playerInventory.Add();
             col.GetComponent<PlayerAttributes>().hasYarn = true;
             StartCoroutine(WaitAndDestroy());
         }
