@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     public Slider healthBar;
 
+    Animator slideAnim; 
+
     void Start()
     { 
         rb = this.GetComponent<Rigidbody2D>();
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
         isHiding = false;
         isDead = false;
         currentHealth = maxHealth;
+        slideAnim = healthBar.GetComponent<Animator>(); 
     }
 
     void FixedUpdate()
@@ -101,14 +104,7 @@ public class PlayerController : MonoBehaviour
             nearShelterObject = true;
         }
         if(other.gameObject.tag == "Enemy") {
-            damageable = other.gameObject.GetComponent<EnemyController>().canDamage;
-            damageAmount = other.gameObject.GetComponent<EnemyController>().damage;
-
-            if(damageable && currentHealth > 0) {
-                currentHealth -= damageAmount;
-                Debug.Log("Damaged by " + damageAmount);
-                Debug.Log("New health: " + currentHealth);
-            } 
+            OnDamaged(other);
         }
         if(other.gameObject.tag == "Safe") {
             isSafe = true;
@@ -118,6 +114,9 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
+        if(other.gameObject.tag == "Enemy") {
+            slideAnim.SetBool("IsBeingDamaged", false);
+        }
         if (other.gameObject.tag == "Ground")
         {
             isGrounded = false;
@@ -202,6 +201,19 @@ public class PlayerController : MonoBehaviour
     public void Squeak()
     {
 
+    }
+
+    private void OnDamaged(Collider2D other) {
+        damageable = other.gameObject.GetComponent<EnemyController>().canDamage;
+        damageAmount = other.gameObject.GetComponent<EnemyController>().damage;
+        slideAnim.SetBool("IsBeingDamaged", true);
+
+
+        if(damageable && currentHealth > 0) {
+            currentHealth -= damageAmount;
+            Debug.Log("Damaged by " + damageAmount);
+            Debug.Log("New health: " + currentHealth);
+            } 
     }
 
     private void RegenerateHealth() {

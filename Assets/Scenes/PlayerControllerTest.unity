@@ -1279,6 +1279,12 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+--- !u!1 &1940865198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8418730105534970746, guid: 08ac2029f013b6e4282f886dfb00749f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8418730105863617492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1940865199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8418730105534970747, guid: 08ac2029f013b6e4282f886dfb00749f,
@@ -1291,12 +1297,31 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8418730105863617492}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1940865198}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1940865201
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940865198}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f1604f2c4fee674aa31a89289e5b114, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1981901382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 809485015377912608, guid: c7e1187e1f48d42a69bbc3e879c54ac7,
@@ -15119,12 +15144,12 @@ PrefabInstance:
     - target: {fileID: 8418730105534970747, guid: 08ac2029f013b6e4282f886dfb00749f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -428
+      value: -596
       objectReference: {fileID: 0}
     - target: {fileID: 8418730105534970747, guid: 08ac2029f013b6e4282f886dfb00749f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 322
+      value: 445
       objectReference: {fileID: 0}
     - target: {fileID: 8418730105534970747, guid: 08ac2029f013b6e4282f886dfb00749f,
         type: 3}
