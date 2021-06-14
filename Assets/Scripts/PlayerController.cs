@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public static bool dashing;
     private ParticleSystem healthParticleSystem;
     public GameObject healthParticles;
+    public GameObject damageParticles;
+    private ParticleSystem damageParticleSystem;
     public GameObject player;
     public Slider healthBar;
 
@@ -213,7 +215,12 @@ public class PlayerController : MonoBehaviour
             currentHealth -= damageAmount;
             Debug.Log("Damaged by " + damageAmount);
             Debug.Log("New health: " + currentHealth);
-            } 
+        } 
+
+        //(healthBar.transform.position + new Vector3((healthBar.transform.position.x + healthBar.transform.position.x/2), healthBar.transform.position.y, 0), Quaternion.identity, 1f);
+        GameObject currentDamageParticles = Instantiate(damageParticles, player.transform);
+        damageParticleSystem = damageParticles.GetComponent<ParticleSystem>();
+        Destroy(currentDamageParticles, damageParticleSystem.main.duration);
     }
 
     private void RegenerateHealth() {
