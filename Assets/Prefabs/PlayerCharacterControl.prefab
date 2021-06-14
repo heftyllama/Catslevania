@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd479f54bb689492ebae1632fe0a8db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 100
+  currentHealth: 0
   isDead: 0
   playerMovementSpeed: 10
   stoppingSpeed: 1
@@ -57,6 +58,10 @@ MonoBehaviour:
   isFacingRight: 1
   isHiding: 0
   isSafe: 0
+  healthParticles: {fileID: 7631065290030848818, guid: 18219e35676c3f740b62aaa67463e89b,
+    type: 3}
+  healthParticleSystem: {fileID: 5553274896349269733, guid: 18219e35676c3f740b62aaa67463e89b,
+    type: 3}
 --- !u!50 &809485015377912610
 Rigidbody2D:
   serializedVersion: 4

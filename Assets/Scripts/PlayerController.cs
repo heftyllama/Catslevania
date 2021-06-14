@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class PlayerController : MonoBehaviour
     float moveHorizontal,moveVertical;
 
     public static bool dashing;
+    private ParticleSystem healthParticleSystem;
+    public GameObject healthParticles;
+    public GameObject player;
+    public Slider healthBar;
 
     void Start()
     { 
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        UpdateHealthBar();
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         horizontalMovement = new Vector2(moveHorizontal,0); 
 
@@ -107,8 +113,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag == "Safe") {
             isSafe = true;
             playerSprite.sortingLayerName = "PlayerHidden";
-            currentHealth = maxHealth;
-            Debug.Log("You are safe. Health restored. " + currentHealth);
+            RegenerateHealth();
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -199,9 +204,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void RegenerateHealth() {
+        currentHealth = maxHealth;
+        Debug.Log("You are safe. Health restored. " + currentHealth);
+        GameObject currentHealthParticles = Instantiate(healthParticles, player.transform);
+        healthParticleSystem = healthParticles.GetComponent<ParticleSystem>();
+        Destroy(currentHealthParticles, healthParticleSystem.main.duration);
+    }
+
     ///////////////////////////////Bonus//////////////////////////////
     public void Laserpointer()
     {
 
+    }
+
+    private void UpdateHealthBar() {
+        healthBar.value = currentHealth;
     }
 }

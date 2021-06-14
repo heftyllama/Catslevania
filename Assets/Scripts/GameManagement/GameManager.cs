@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
         if(playerController.isDead)
         {
             gameLost = true;
-            Time.timeScale = 0;
         }
         else if(finalBossDefeated)
         {
