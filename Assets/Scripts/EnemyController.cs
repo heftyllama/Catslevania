@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class EnemyController : MonoBehaviour
     public float damage;
     public float damageDelay = 3f;
     public bool enemyIsActive = false;
-    private Transform target;
+    private Transform player;
     public Transform groundDetection;
     public BoxCollider2D wallDetection;
     private bool isHidden;
@@ -18,44 +17,56 @@ public class EnemyController : MonoBehaviour
     public bool canDamage = true;
     public bool isMovingRight = true;
     public GameObject enemy;
-    public string name;
+    public string enemyName;
 
-    // Start is called before the first frame update
+    public static event Action followPlayer;
+
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();  
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     void FixedUpdate() {
-        if(name == "RatSkull") {
-            Follow();
-        }
-        if(name == "EctoRat") {
+        
+        if(enemyName == "EctoRat") {
             Patrol();
         }
     }
 
-    void EnemyActive(bool activity) {
-        if(activity) {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+    private void OnEnable() {
+        PlayerController.playerIsSafe += EnemyActive;
+        PlayerController.playerIsSafe += Follow;
+    }
+
+    private void OnDisable() {
+        PlayerController.playerIsSafe -= EnemyActive;
+        PlayerController.playerIsSafe -= Follow;   
+    }
+    
+
+    void EnemyActive(bool isSafe) {
+        if(!isSafe) {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
     }
 
-    void Follow() {
-        distance = Vector3.Distance(transform.position, target.position);
-        isHidden = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isHiding;
-        isSafe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isSafe;
+    void Follow(bool isSafe) {
+        if(enemyName == "RatSkull" && !isSafe) {
+            followPlayer();
+            //distance = Vector3.Distance(transform.position, player.position);
+            //isHidden = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isHiding;
+            //isSafe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isSafe;
 
-        if(distance < 10f && !isHidden && !isSafe) {
-            enemyIsActive = true;
-            canDamage = true;
-        }
-        else {
-            enemyIsActive = false;
-            canDamage = false;
-        }
-        Debug.Log("enemy is active: " + enemyIsActive);
-        EnemyActive(enemyIsActive);
+            if(distance < 10f && !isSafe) {
+                enemyIsActive = true;
+                canDamage = true;
+            }
+            else {
+                enemyIsActive = false;
+                canDamage = false;
+            }
+            Debug.Log("enemy is active: " + enemyIsActive);
+        }  
     }
 
     void Patrol() {

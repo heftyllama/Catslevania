@@ -5,11 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public PlayerController playerController;
+    public CollectibleManager collectibleManager;
     public bool isNewGame;
     public bool gameLost;
     public bool gameWon;
     public bool finalBossDefeated;
-
     public void Update()
     {
         CheckGameWinCondition();
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         {
             gameLost = true;
         }
-        else if(finalBossDefeated)
+        else if(collectibleManager.allCollectiblesCollected)
         {
             gameWon = true;
         }
