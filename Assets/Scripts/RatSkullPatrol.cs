@@ -64,6 +64,7 @@ public class RatSkullPatrol : MonoBehaviour
 
     private void FollowPlayer() {
         distanceFromPlayer = Vector3.Distance(transform.position, player.position);
+        Debug.Log("im following the player!");
     }
 
     private Vector2 GetRandomPosition() {

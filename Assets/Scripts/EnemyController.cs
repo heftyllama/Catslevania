@@ -45,6 +45,7 @@ public class EnemyController : MonoBehaviour
     
 
     void EnemyActive(bool isSafe) {
+        Debug.Log(isSafe + " from enemyactive");
         if(!isSafe) {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
@@ -52,18 +53,21 @@ public class EnemyController : MonoBehaviour
 
     void Follow(bool isSafe) {
         if(enemyName == "RatSkull" && !isSafe) {
-            followPlayer();
-            //distance = Vector3.Distance(transform.position, player.position);
+            
+            distance = Vector3.Distance(transform.position, player.position);
             //isHidden = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isHiding;
             //isSafe = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isSafe;
 
-            if(distance < 10f && !isSafe) {
+            if(distance < 10f) {
                 enemyIsActive = true;
                 canDamage = true;
+                Debug.Log("player can be followed");
+                followPlayer();
             }
             else {
                 enemyIsActive = false;
                 canDamage = false;
+                Debug.Log("player can not be followed");
             }
             Debug.Log("enemy is active: " + enemyIsActive);
         }  

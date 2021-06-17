@@ -8,11 +8,9 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.name == "PlayerCharacterControl"){
-            OnPickUp();
+            pickedUp();
+            Destroy(this.gameObject);
         }   
     }
-    private void OnPickUp() {
-        pickedUp();
-        Destroy(this.gameObject);
-    }
+
 }
