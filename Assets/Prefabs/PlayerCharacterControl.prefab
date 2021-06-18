@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 809485015377912613}
   - component: {fileID: 809485015377912608}
+  - component: {fileID: 8237857196972231233}
   - component: {fileID: 809485015377912610}
   - component: {fileID: 809485015377912611}
   - component: {fileID: 809485015377912609}
@@ -60,8 +61,26 @@ MonoBehaviour:
   isSafe: 0
   healthParticles: {fileID: 7631065290030848818, guid: 18219e35676c3f740b62aaa67463e89b,
     type: 3}
-  healthParticleSystem: {fileID: 5553274896349269733, guid: 18219e35676c3f740b62aaa67463e89b,
-    type: 3}
+  damageParticles: {fileID: 0}
+  player: {fileID: 0}
+  healthBar: {fileID: 0}
+--- !u!114 &8237857196972231233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809485015377912612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2abdde9dc51f14f9d82d97e2a9422c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 8
+  speed: 10
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &809485015377912610
 Rigidbody2D:
   serializedVersion: 4

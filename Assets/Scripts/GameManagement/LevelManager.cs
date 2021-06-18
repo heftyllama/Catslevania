@@ -42,6 +42,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Victory!");
             //Load Victory Scene
+            SceneLoader("GameWonScene");
         }
     }
 }
