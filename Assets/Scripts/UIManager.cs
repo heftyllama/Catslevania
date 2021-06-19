@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     }
 
     private void UpdateHealthBar(float health) {
+        if(health < healthBar.value) {
+            healthBar.animator.SetBool("IsBeingDamaged", true);
+        }
         healthBar.value = health;
     }
 }
