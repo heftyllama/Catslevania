@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class CollectibleManager : MonoBehaviour
@@ -9,12 +9,17 @@ public class CollectibleManager : MonoBehaviour
     public int numberOfCollectiblesCollected;
     public bool allCollectiblesCollected;
 
+    public static event Action<float> setTotalCollectibles;
+    public static event Action<float> setCurrentCollectibles;
+
     private void Awake() {
         collectible = GetComponent<GameObject>(); 
         collectibles = FindObjectsOfType<Collectible>();
         numberOfCollectibles = collectibles.Length;
+        setTotalCollectibles(numberOfCollectibles);
         
         numberOfCollectiblesCollected = 0;
+        setCurrentCollectibles(numberOfCollectiblesCollected);
         allCollectiblesCollected = false;
     }
 
@@ -30,6 +35,7 @@ public class CollectibleManager : MonoBehaviour
 
     public void OnPickUp() {
         numberOfCollectiblesCollected++;
+        setCurrentCollectibles(numberOfCollectiblesCollected);
     }
 
     public void AllPickupsCheck() {
